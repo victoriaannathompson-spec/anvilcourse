@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anvilcourse — Professional Crypto & Asset Recovery</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23080E12'/%3E%3Ccircle cx='24' cy='24' r='20' stroke='%2300C9A7' stroke-width='1.5' fill='none'/%3E%3Cpolygon points='24,6 27,14 24,12 21,14' fill='%23C9A84C'/%3E%3Ccircle cx='24' cy='24' r='5' fill='%23C9A84C'/%3E%3Ccircle cx='24' cy='24' r='2.5' fill='%230A0F1E'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#E07B39;--gold-light:#F0A060;--gold-dark:#B05A20;--navy:#080E12;--navy-mid:#0D1519;--navy-light:#111E24;--slate:#7A9BA8;--white:#EEF5F7;--accent:#00C9A7;--accent2:#7FFFD4;--card-bg:rgba(11,22,28,0.92);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);background-image:radial-gradient(ellipse at 20% 50%,rgba(0,201,167,0.03) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(224,123,57,0.03) 0%,transparent 50%);color:var(--white);overflow-x:hidden;}
+::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:var(--navy);}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px;}
+
+/* TOPBAR */
+.topbar{background:rgba(10,15,30,0.98);border-bottom:1px solid rgba(0,201,167,0.2);padding:10px 0;position:sticky;top:0;z-index:1000;backdrop-filter:blur(12px);}
+.topbar-inner{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+.logo-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.logo-icon{width:48px;height:48px;flex-shrink:0;}
+.logo-icon svg{width:100%;height:100%;}
+.logo-text{display:flex;flex-direction:column;}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--white);letter-spacing:2px;line-height:1;}
+.logo-tagline{font-size:0.62rem;color:var(--slate);letter-spacing:3px;text-transform:uppercase;margin-top:2px;}
+nav{display:flex;align-items:center;gap:1.8rem;}
+nav a{color:var(--slate);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+nav a:hover{color:var(--gold);}
+.nav-contact{color:var(--white)!important;background:rgba(0,201,167,0.12);border:1px solid var(--accent);padding:8px 18px;border-radius:4px;transition:all 0.3s!important;}
+.nav-contact:hover{background:var(--gold)!important;color:var(--navy)!important;}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy)!important;padding:10px 22px;border-radius:4px;font-weight:700!important;letter-spacing:1px;text-transform:uppercase;font-size:0.8rem!important;}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(224,123,57,0.4);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
+.hamburger span{width:24px;height:2px;background:var(--gold);border-radius:2px;}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.hero-video-bg{position:absolute;inset:0;z-index:0;}
+.hero-video-bg video{width:100%;height:100%;object-fit:cover;opacity:0.18;}
+.hero-video-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,15,30,0.97) 0%,rgba(10,15,30,0.75) 50%,rgba(10,15,30,0.92) 100%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,201,167,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,201,167,0.04) 1px,transparent 1px);background-size:60px 60px;z-index:1;}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);z-index:1;pointer-events:none;}
+.hero-orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(0,201,167,0.08),transparent 70%);top:-100px;right:-100px;}
+.hero-orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(224,123,57,0.12),transparent 70%);bottom:-50px;left:10%;}
+.hero-content{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:6rem 2rem 4rem;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.3);border-radius:30px;padding:6px 16px;margin-bottom:2rem;font-size:0.75rem;color:var(--accent);letter-spacing:2px;text-transform:uppercase;animation:fadeDown 0.8s ease both;}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);}}
+h1.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;line-height:1.05;margin-bottom:1.5rem;animation:fadeUp 0.9s ease 0.1s both;}
+h1.hero-title .gold{color:var(--gold);}h1.hero-title .accent{color:var(--accent);}
+h1.hero-title .accent{color:var(--accent);}
+.hero-sub{font-size:1.1rem;color:var(--slate);max-width:580px;line-height:1.8;margin-bottom:2.5rem;font-weight:300;animation:fadeUp 0.9s ease 0.2s both;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.9s ease 0.3s both;}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:0.95rem;letter-spacing:1px;text-transform:uppercase;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,123,57,0.4);}
+.btn-secondary{background:transparent;color:var(--white);padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:500;font-size:0.95rem;border:1px solid rgba(255,255,255,0.2);transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(0,201,167,0.2);animation:fadeUp 0.9s ease 0.4s both;flex-wrap:wrap;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1;}
+.stat-label{font-size:0.75rem;color:var(--slate);letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+
+/* SECTIONS */
+section{padding:6rem 0;}
+.section-inner{max-width:1300px;margin:0 auto;padding:0 2rem;}
+.section-label{font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;max-width:60px;height:1px;background:var(--accent);opacity:0.6;}
+h2.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.2;margin-bottom:1.2rem;}
+.section-desc{color:var(--slate);font-size:1.05rem;line-height:1.8;max-width:600px;}
+.alt-bg{background:var(--navy-mid);}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,201,167,0.3),transparent);}
+
+/* TRUST BAR */
+.trust-bar{background:linear-gradient(135deg,rgba(224,123,57,0.08),rgba(0,201,167,0.05));border-top:1px solid rgba(224,123,57,0.12);border-bottom:1px solid rgba(224,123,57,0.12);padding:2rem 0;}
+.trust-inner{max-width:1300px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:2rem;}
+.trust-item{display:flex;align-items:center;gap:10px;color:var(--slate);font-size:0.88rem;}
+.trust-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3rem;border:1.5px solid rgba(0,201,167,0.2);border-radius:8px;overflow:hidden;}
+.svc-card{background:var(--card-bg);padding:2.5rem;transition:all 0.3s;text-decoration:none;color:inherit;display:block;position:relative;}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity 0.3s;}
+.svc-card:hover::before{opacity:1;}
+.svc-card:hover{background:rgba(224,123,57,0.06);}
+.svc-ico{width:52px;height:52px;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.5rem;}
+.svc-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:0.8rem;}
+.svc-card p{color:var(--slate);font-size:0.9rem;line-height:1.7;}
+.svc-learn{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-size:0.82rem;letter-spacing:1px;text-transform:uppercase;margin-top:1.2rem;font-weight:600;}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:3rem;}
+.step{text-align:center;padding:2rem 1.5rem;}
+.step-num{width:72px;height:72px;border:2px solid rgba(0,201,167,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--accent);background:rgba(10,15,30,0.9);}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:0.6rem;}
+.step p{color:var(--slate);font-size:0.88rem;line-height:1.7;}
+
+/* IMAGES */
+.img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;border-radius:12px;overflow:hidden;}
+.img-box{height:280px;position:relative;overflow:hidden;background:var(--navy-mid);}
+.img-box img{width:100%;height:100%;object-fit:cover;opacity:0.7;}
+.img-box-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,30,0.85),transparent 60%);}
+.img-box-label{position:absolute;bottom:1.5rem;left:1.5rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;}
+
+/* FORM */
+.form-wrap{max-width:780px;margin:3rem auto 0;background:var(--card-bg);border:1px solid rgba(0,201,167,0.25);border-radius:12px;overflow:hidden;}
+.form-head{background:linear-gradient(135deg,rgba(224,123,57,0.15),rgba(0,201,167,0.05));padding:2rem 2.5rem;border-bottom:1px solid rgba(224,123,57,0.15);}
+.form-head h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;margin-bottom:0.4rem;}
+.form-head p{color:var(--slate);font-size:0.9rem;}
+.form-body{padding:2.5rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.2rem;}
+.fg{margin-bottom:1.2rem;}
+.fg label{display:block;font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;color:var(--slate);margin-bottom:8px;font-weight:500;}
+.fg input,.fg select,.fg textarea{width:100%;background:rgba(10,15,30,0.8);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:12px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:0.95rem;transition:border-color 0.2s;outline:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--accent);}
+.fg textarea{resize:vertical;min-height:100px;}
+.fg select option{background:var(--navy-mid);}
+.form-actions{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;}
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:16px 28px;border-radius:6px;font-weight:700;font-size:0.92rem;transition:all 0.3s;border:none;cursor:pointer;flex:1;text-decoration:none;}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.3);}
+.form-note{font-size:0.78rem;color:var(--slate);text-align:center;margin-top:1rem;line-height:1.6;}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.tcard{background:var(--card-bg);border:1px solid rgba(0,201,167,0.15);border-radius:10px;padding:2rem;}
+.stars{color:var(--gold);font-size:0.9rem;margin-bottom:1rem;letter-spacing:2px;}
+.tcard p{color:var(--slate);font-size:0.9rem;line-height:1.8;margin-bottom:1.2rem;font-style:italic;}
+.tauthor{display:flex;align-items:center;gap:12px;}
+.tavatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--navy);flex-shrink:0;}
+.tname{font-weight:600;font-size:0.9rem;}
+.tloc{color:var(--slate);font-size:0.78rem;}
+.tbadge{display:inline-flex;align-items:center;gap:4px;background:rgba(0,201,167,0.1);border:1px solid rgba(0,201,167,0.2);color:var(--accent2);font-size:0.72rem;padding:3px 8px;border-radius:3px;margin-top:4px;}
+
+/* ARTICLES */
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.acard{background:var(--card-bg);border:1px solid rgba(0,201,167,0.12);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:block;transition:all 0.3s;}
+.acard:hover{border-color:rgba(0,201,167,0.45);transform:translateY(-3px);}
+.acard-img{height:180px;background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));position:relative;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.acard-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(10,15,30,0.9));}
+.atag{position:absolute;top:12px;left:12px;background:rgba(0,201,167,0.9);color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:3px;z-index:1;}
+.acard-body{padding:1.5rem;}
+.ameta{display:flex;align-items:center;gap:12px;margin-bottom:0.8rem;}
+.adate{font-size:0.75rem;color:var(--slate);}
+.aread{font-size:0.75rem;color:var(--accent);background:rgba(0,201,167,0.08);padding:3px 8px;border-radius:3px;}
+.acard h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:0.6rem;line-height:1.4;}
+.acard p{color:var(--slate);font-size:0.85rem;line-height:1.7;}
+.load-more{text-align:center;margin-top:2.5rem;}
+.btn-outline{background:transparent;color:var(--accent);border:1px solid var(--accent);padding:14px 36px;border-radius:4px;font-weight:600;font-size:0.88rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{background:var(--accent);color:#fff;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.citems{display:flex;flex-direction:column;gap:1.2rem;}
+.citem{display:flex;align-items:center;gap:14px;padding:1.2rem;background:var(--card-bg);border:1px solid rgba(0,201,167,0.15);border-radius:8px;text-decoration:none;color:inherit;transition:all 0.3s;}
+.citem:hover{border-color:var(--accent);transform:translateX(4px);}
+.cico{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cico.email{background:rgba(0,201,167,0.1);}
+.cico.wa{background:rgba(37,211,102,0.1);}
+.cico.clock{background:rgba(0,201,167,0.1);}
+.clabel{font-size:0.72rem;color:var(--slate);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.cval{font-size:0.95rem;font-weight:500;}
+.cwhy{background:var(--card-bg);border:1px solid rgba(0,201,167,0.25);border-radius:12px;padding:2.5rem;}
+.cwhy h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:1.2rem;}
+.cwhy ul{list-style:none;display:flex;flex-direction:column;gap:1rem;}
+.cwhy ul li{display:flex;align-items:flex-start;gap:12px;color:var(--slate);font-size:0.92rem;line-height:1.6;}
+.cwhy ul li .ck{color:var(--accent);flex-shrink:0;}
+.cwhy ul li strong{color:var(--white);}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(0,201,167,0.2);padding:5rem 0 2rem;}
+.fgrid{max-width:1300px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.fbrand p{color:var(--slate);font-size:0.88rem;line-height:1.8;margin-top:1rem;}
+.fcontacts{margin-top:1.2rem;display:flex;flex-direction:column;gap:0.5rem;}
+.fcontacts a{color:var(--slate);font-size:0.82rem;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color 0.2s;}
+.fcontacts a:hover{color:var(--gold);}
+.fcol h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--accent);letter-spacing:1px;margin-bottom:1.2rem;text-transform:uppercase;}
+.fcol ul{list-style:none;}
+.fcol ul li{margin-bottom:0.6rem;}
+.fcol ul li a{color:var(--slate);text-decoration:none;font-size:0.88rem;transition:color 0.2s;display:flex;align-items:center;gap:6px;}
+.fcol ul li a:hover{color:var(--gold);}
+.fcol ul li a::before{content:'›';color:var(--accent);opacity:0.7;}
+.fbot{max-width:1300px;margin:0 auto;padding:2rem 2rem 0;border-top:1px solid rgba(0,201,167,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.fcopy{color:var(--slate);font-size:0.82rem;}
+.flegal{display:flex;gap:1.5rem;}
+.flegal a{color:var(--slate);font-size:0.82rem;text-decoration:none;transition:color 0.2s;}
+.flegal a:hover{color:var(--accent);}
+
+/* MODALS */
+.moverlay{position:fixed;inset:0;background:rgba(5,8,18,0.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(8px);}
+.moverlay.open{display:flex;}
+.modal{background:var(--navy-mid);border:1px solid rgba(0,201,167,0.3);border-radius:12px;max-width:760px;width:100%;max-height:85vh;overflow-y:auto;}
+.mhead{padding:2rem 2.5rem 1.5rem;border-bottom:1px solid rgba(0,201,167,0.15);display:flex;justify-content:space-between;align-items:flex-start;position:sticky;top:0;background:var(--navy-mid);z-index:1;}
+.mhead h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--accent);}
+.mclose{background:none;border:none;color:var(--slate);cursor:pointer;font-size:1.5rem;padding:0 0 0 1rem;line-height:1;transition:color 0.2s;}
+.mclose:hover{color:var(--white);}
+.mbody{padding:2rem 2.5rem;}
+.mbody h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--white);margin:1.8rem 0 0.6rem;}
+.mbody h3:first-child{margin-top:0;}
+.mbody p{color:var(--slate);line-height:1.8;font-size:0.95rem;margin-bottom:0.8rem;}
+.mbody ul{color:var(--slate);padding-left:1.2rem;margin:0.5rem 0 1rem;}
+.mbody ul li{margin-bottom:0.5rem;line-height:1.7;font-size:0.93rem;}
+.mbox{background:rgba(0,201,167,0.08);border-left:3px solid var(--accent);padding:1.2rem 1.5rem;border-radius:0 6px 6px 0;margin:1.2rem 0;}
+.mbox p{color:var(--white)!important;margin:0!important;font-size:0.92rem!important;}
+.mwa{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:14px 28px;border-radius:6px;font-weight:700;font-size:0.9rem;border:none;cursor:pointer;text-decoration:none;transition:all 0.25s;margin-top:1.2rem;}
+.mwa:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.25);}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .steps-grid{grid-template-columns:1fr 1fr;}
+  .tgrid{grid-template-columns:1fr 1fr;}
+  .agrid{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .fgrid{grid-template-columns:1fr 1fr;}
+  .img-grid{grid-template-columns:1fr 1fr;}
+  nav{display:none;}
+  nav.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--navy);padding:1.5rem 2rem;border-bottom:1px solid rgba(0,201,167,0.2);z-index:999;}
+  .hamburger{display:flex;}
+  .topbar-inner{position:relative;}
+}
+@media(max-width:600px){
+  .services-grid,.steps-grid,.tgrid,.agrid,.img-grid,.fgrid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+  .fbot{flex-direction:column;text-align:center;}
+  .mbody,.mhead{padding:1.5rem;}
+  .hero-actions,.form-actions{flex-direction:column;}
+  .btn-primary,.btn-secondary,.wa-btn{justify-content:center;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="logo-wrap">
+      <div class="logo-icon">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Hexagon background -->
+          <polygon points="24,2 42,12 42,36 24,46 6,36 6,12" fill="#0D1E28" stroke="#00C9A7" stroke-width="1.2"/>
+          <!-- Inner hexagon ring -->
+          <polygon points="24,7 38,14.5 38,33.5 24,41 10,33.5 10,14.5" fill="none" stroke="#E07B39" stroke-width="0.6" opacity="0.5"/>
+          <!-- Bold A lettermark -->
+          <text x="24" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="900" fill="url(#lg1)" letter-spacing="-1">A</text>
+          <!-- Teal underline bar -->
+          <rect x="14" y="34" width="20" height="2" rx="1" fill="#00C9A7" opacity="0.9"/>
+          <!-- Corner crypto dots -->
+          <circle cx="24" cy="6" r="1.5" fill="#00C9A7"/>
+          <circle cx="38.5" cy="13" r="1" fill="#E07B39" opacity="0.7"/>
+          <circle cx="38.5" cy="35" r="1" fill="#E07B39" opacity="0.7"/>
+          <defs>
+            <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#00C9A7"/>
+              <stop offset="100%" stop-color="#E07B39"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name"><span style="color:var(--accent)">ANVIL</span><span style="color:var(--gold)">COURSE</span></span>
+        <span class="logo-tagline">Certified Asset Recovery</span>
+      </div>
+    </a>
+    <nav id="main-nav">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">Process</a>
+      <a href="#insights">Insights</a>
+      <a href="#contact" class="nav-contact">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Contact
+      </a>
+      <a href="#form-section" class="nav-cta">Start Recovery</a>
+    </nav>
+    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-animation-of-futuristic-devices-99786-large.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Trusted Recovery Specialists Since 2019</div>
+    <h1 class="hero-title">
+      Recover Your<br>
+      <span class="gold">Lost Crypto</span> &amp;<br>
+      <span class="accent">Digital Assets</span>
+    </h1>
+    <p class="hero-sub">Professional, confidential asset recovery for Bitcoin, Ethereum, USDT, NFTs, hacked exchange accounts, hardware wallets, and all digital currencies. Industry-leading specialists with a proven track record.</p>
+    <div class="hero-actions">
+      <a href="#form-section" class="btn-primary">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Submit Recovery Request
+      </a>
+      <a href="#how-it-works" class="btn-secondary">How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">$48M+</div><div class="stat-label">Assets Recovered</div></div>
+      <div><div class="stat-num">3,800+</div><div class="stat-label">Cases Resolved</div></div>
+      <div><div class="stat-num">94%</div><div class="stat-label">Success Rate</div></div>
+      <div><div class="stat-num">72hr</div><div class="stat-label">Avg Response Time</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-dot"></div>Bank-Grade Encryption</div>
+    <div class="trust-item"><div class="trust-dot"></div>100% Confidential</div>
+    <div class="trust-item"><div class="trust-dot"></div>Certified Specialists</div>
+    <div class="trust-item"><div class="trust-dot"></div>24/7 WhatsApp Support</div>
+    <div class="trust-item"><div class="trust-dot"></div>Global Operations — 60+ Countries</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">Our Expertise</div>
+    <h2 class="section-title">Comprehensive Recovery <span style="color:var(--gold)">Solutions</span></h2>
+    <p class="section-desc">From forgotten wallet passwords to sophisticated exchange hacks — our forensic team handles every scenario with precision and discretion.</p>
+    <div class="services-grid">
+      <a href="#" class="svc-card" onclick="openM('wallet');return false;">
+        <div class="svc-ico">&#128272;</div>
+        <h3>Wallet Recovery</h3>
+        <p>Restore access to Bitcoin, Ethereum, and all major cryptocurrency wallets. We recover from seed phrase loss, wallet corruption, and device failure.</p>
+        <div class="svc-learn">Learn More &#8594;</div>
+      </a>
+      <a href="#" class="svc-card" onclick="openM('password');return false;">
+        <div class="svc-ico">&#128273;</div>
+        <h3>Password Recovery</h3>
+        <p>Advanced cryptographic techniques to recover lost passwords protecting wallets, encrypted drives, and trading accounts.</p>
+        <div class="svc-learn">Learn More &#8594;</div>
+      </a>
+      <a href="#" class="svc-card" onclick="openM('hacked');return false;">
+        <div class="svc-ico">&#128737;</div>
+        <h3>Hacked Account Recovery</h3>
+        <p>Full forensic investigation and account restoration after unauthorized access. We work with exchanges to recover stolen funds.</p>
+        <div class="svc-learn">Learn More &#8594;</div>
+      </a>
+      <a href="#" class="svc-card" onclick="openM('exchange');return false;">
+        <div class="svc-ico">&#127974;</div>
+        <h3>Exchange Recovery</h3>
+        <p>Recover funds trapped on frozen, suspended, or bankrupt exchanges. Specialist liaison with Binance, Coinbase, Kraken, and more.</p>
+        <div class="svc-learn">Learn More &#8594;</div>
+      </a>
+      <a href="#" class="svc-card" onclick="openM('hardware');return false;">
+        <div class="svc-ico">&#128190;</div>
+        <h3>Hardware Wallet Recovery</h3>
+        <p>Expert recovery from damaged, locked, or corrupted hardware wallets including Ledger, Trezor, KeepKey, and all major devices.</p>
+        <div class="svc-learn">Learn More &#8594;</div>
+      </a>
+      <a href="#" class="svc-card" onclick="openM('mobile');return false;">
+        <div class="svc-ico">&#128241;</div>
+        <h3>Mobile Wallet Recovery</h3>
+        <p>Recover assets from deleted apps, factory-reset phones, or inaccessible mobile wallets on iOS and Android platforms.</p>
+        <div class="svc-learn">Learn More &#8594;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+<section id="how-it-works" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-label">Our Process</div>
+    <h2 class="section-title">Recovery in <span style="color:var(--gold)">4 Steps</span></h2>
+    <div class="steps-grid">
+      <div class="step"><div class="step-num">01</div><h3>Submit Request</h3><p>Complete our secure intake form or contact us via WhatsApp. All information is encrypted and strictly confidential.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>Free Assessment</h3><p>Our specialists conduct a no-obligation evaluation within 24 hours and provide a recovery probability analysis.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>Forensic Recovery</h3><p>Using proprietary blockchain forensics and advanced cryptographic tools, we execute the recovery operation.</p></div>
+      <div class="step"><div class="step-num">04</div><h3>Asset Restitution</h3><p>Recovered assets are transferred securely to your verified wallet with full transparency and reporting throughout.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE IMAGES -->
+<section style="padding:4rem 0;">
+  <div class="section-inner">
+    <div class="img-grid">
+      <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80" alt="Expert team" onerror="this.style.display='none'">
+        <div class="img-box-overlay"></div>
+        <div class="img-box-label">Expert Forensic Team</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Operations center" onerror="this.style.display='none'">
+        <div class="img-box-overlay"></div>
+        <div class="img-box-label">Secure Operations Center</div>
+      </div>
+      <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Client consultation" onerror="this.style.display='none'">
+        <div class="img-box-overlay"></div>
+        <div class="img-box-label">Client Consultation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="form-section" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-label">Get Started</div>
+    <h2 class="section-title">Submit Your <span style="color:var(--gold)">Recovery Request</span></h2>
+    <p class="section-desc">Complete the form below. Our team reviews every submission within 24 hours. All information is encrypted and strictly confidential.</p>
+    <div class="form-wrap">
+      <div class="form-head">
+        <h3>Secure Recovery Request</h3>
+        <p>Your information is protected with AES-256 encryption. We will never share your details.</p>
+      </div>
+      <div class="form-body">
+        <div class="form-row">
+          <div class="fg"><label>Full Name</label><input type="text" id="fn" placeholder="Your full name"></div>
+          <div class="fg"><label>Email Address</label><input type="email" id="fe" placeholder="your@email.com"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>Phone / WhatsApp</label><input type="tel" id="fp" placeholder="+1 (555) 000-0000"></div>
+          <div class="fg">
+            <label>Recovery Type</label>
+            <select id="ft">
+              <option value="">-- Select type --</option>
+              <option>Wallet Recovery</option>
+              <option>Password Recovery</option>
+              <option>Hacked Account Recovery</option>
+              <option>Exchange Recovery</option>
+              <option>Hardware Wallet Recovery</option>
+              <option>Mobile Wallet Recovery</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>Cryptocurrency / Asset</label><input type="text" id="fa" placeholder="e.g. Bitcoin, Ethereum, USDT"></div>
+          <div class="fg"><label>Estimated Value (USD)</label><input type="text" id="fv" placeholder="e.g. $5,000"></div>
+        </div>
+        <div class="fg"><label>Describe Your Situation</label><textarea id="fd" placeholder="Please describe how you lost access, when it happened, and any relevant details about your wallet or account..."></textarea></div>
+        <div class="form-actions">
+          <button class="wa-btn" onclick="submitWA()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Send Recovery Request via WhatsApp
+          </button>
+        </div>
+        <p class="form-note">Your request will be sent directly to our recovery specialists via WhatsApp. We respond within 24 hours. All information is handled with strict confidentiality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS STORIES -->
+<section id="success-stories">
+  <div class="section-inner">
+    <div class="section-label">Success Stories</div>
+    <h2 class="section-title">Real Clients. <span style="color:var(--gold)">Real Results.</span></h2>
+    <p class="section-desc">Our proven track record speaks for itself. Real outcomes from real cases, shared with client permission.</p>
+    <div class="tgrid">
+      <div class="tcard">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I lost access to my Ledger hardware wallet containing 3.2 BTC. Anvilcourse recovered every satoshi within 6 days. Their professionalism and technical expertise are unmatched."</p>
+        <div class="tauthor"><div class="tavatar">MK</div><div><div class="tname">Michael K.</div><div class="tloc">New York, USA</div><div class="tbadge">&#10003; $142,000 Recovered</div></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"My Binance account was hacked and $38,000 in USDT was drained. Aegis worked directly with the exchange security team and recovered my funds in full. Cannot thank them enough."</p>
+        <div class="tauthor"><div class="tavatar">SP</div><div><div class="tname">Sarah P.</div><div class="tloc">London, UK</div><div class="tbadge">&#10003; $38,000 Recovered</div></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I thought my wallet password was gone forever. After trying everything, Aegis recovered it in 4 days using techniques I did not know existed. Truly world-class specialists."</p>
+        <div class="tauthor"><div class="tavatar">JR</div><div><div class="tname">James R.</div><div class="tloc">Toronto, Canada</div><div class="tbadge">&#10003; $67,500 Recovered</div></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;"><a href="#" class="btn-outline" onclick="openM('stories');return false;">View All Success Stories</a></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECURITY INSIGHTS -->
+<section id="insights" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-label">Security Insights</div>
+    <h2 class="section-title">Expert Knowledge <span style="color:var(--gold)">Hub</span></h2>
+    <p class="section-desc">Stay informed with the latest in crypto security, recovery techniques, and blockchain forensics from our specialists.</p>
+    <div class="agrid">
+      <a href="#" class="acard" onclick="openM('a1');return false;">
+        <div class="acard-img">&#128272;<span class="atag">Security</span></div>
+        <div class="acard-body"><div class="ameta"><span class="adate">March 2026</span><span class="aread">8 min read</span></div><h4>How SIM-Swap Attacks Drain Crypto Wallets</h4><p>SIM-swap fraud has surged 300% in 2025. Learn the exact methods attackers use and the defensive steps that actually work.</p></div>
+      </a>
+      <a href="#" class="acard" onclick="openM('a2');return false;">
+        <div class="acard-img">&#128220;<span class="atag">Recovery</span></div>
+        <div class="acard-body"><div class="ameta"><span class="adate">February 2026</span><span class="aread">10 min read</span></div><h4>Partial Seed Phrase Recovery: When You Only Remember Some Words</h4><p>Losing a full seed phrase is not always the end. Our forensic approach can reconstruct partial phrases.</p></div>
+      </a>
+      <a href="#" class="acard" onclick="openM('a3');return false;">
+        <div class="acard-img">&#127963;<span class="atag">Exchanges</span></div>
+        <div class="acard-body"><div class="ameta"><span class="adate">January 2026</span><span class="aread">7 min read</span></div><h4>What to Do When Your Exchange Account Is Frozen</h4><p>Exchange account freezes are increasingly common. Here is the roadmap to recovering your funds quickly.</p></div>
+      </a>
+      <a href="#" class="acard" onclick="openM('a4');return false;">
+        <div class="acard-img">&#128190;<span class="atag">Hardware</span></div>
+        <div class="acard-body"><div class="ameta"><span class="adate">December 2025</span><span class="aread">9 min read</span></div><h4>Recovering Crypto from a Physically Damaged Ledger or Trezor</h4><p>Water damage, fire, or physical destruction does not have to mean permanent loss.</p></div>
+      </a>
+      <a href="#" class="acard" onclick="openM('a5');return false;">
+        <div class="acard-img">&#127907;<span class="atag">Fraud</span></div>
+        <div class="acard-body"><div class="ameta"><span class="adate">November 2025</span><span class="aread">6 min read</span></div><h4>Crypto Phishing in 2026: New Tactics Targeting Investors</h4><p>Phishing has evolved far beyond obvious emails. The sophisticated campaigns targeting crypto holders today.</p></div>
+      </a>
+      <a href="#" class="acard" onclick="openM('a6');return false;">
+        <div class="acard-img">&#9939;<span class="atag">DeFi</span></div>
+        <div class="acard-body"><div class="ameta"><span class="adate">October 2025</span><span class="aread">11 min read</span></div><h4>DeFi Exploit Recovery: What Is Possible After a Smart Contract Hack</h4><p>Our blockchain tracing capabilities reveal recovery options you may not know exist.</p></div>
+      </a>
+    </div>
+    <div class="load-more"><a href="#" class="btn-outline" onclick="openM('blog');return false;">Load More Articles</a></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact Our <span style="color:var(--gold)">Specialists</span></h2>
+    <div class="contact-grid">
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;margin-bottom:1.5rem;">Reach Us Directly</h3>
+        <p style="color:var(--slate);line-height:1.8;margin-bottom:2rem;">Our specialists are available around the clock for urgent recovery cases. All communications are confidential and encrypted.</p>
+        <div class="citems">
+          <a href="mailto:recover@anvilcourse.org" class="citem">
+            <div class="cico email">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9B59B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><div class="clabel">Email</div><div class="cval">recover@anvilcourse.org</div></div>
+          </a>
+          <a href="https://wa.me/15857592760?text=Hello%20Aegis%20Recourse%2C%20I%20need%20help%20with%20crypto%20recovery." target="_blank" class="citem">
+            <div class="cico wa">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div><div class="clabel">WhatsApp Business</div><div class="cval">+1 (585) 759-2760</div></div>
+          </a>
+          <div class="citem" style="cursor:default;">
+            <div class="cico clock">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07B39" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            </div>
+            <div><div class="clabel">Response Time</div><div class="cval">Within 24 Hours</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="cwhy">
+        <h3>Why Choose Anvilcourse?</h3>
+        <ul>
+          <li><span class="ck">&#10003;</span><span><strong>Certified Blockchain Forensics</strong> — Our team holds certifications from leading blockchain analysis institutes.</span></li>
+          <li><span class="ck">&#10003;</span><span><strong>Strict Confidentiality</strong> — Every case is handled under NDA with bank-grade data security protocols.</span></li>
+          <li><span class="ck">&#10003;</span><span><strong>Transparent Process</strong> — Real-time case updates and full reporting at every stage of recovery.</span></li>
+          <li><span class="ck">&#10003;</span><span><strong>Global Network</strong> — Legal affiliates and exchange contacts in 40+ countries for cross-border cases.</span></li>
+          <li><span class="ck">&#10003;</span><span><strong>Honest Assessments</strong> — We only take cases where recovery is realistically achievable.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fgrid">
+    <div class="fbrand">
+      <a href="#" class="logo-wrap">
+        <div class="logo-icon" style="width:40px;height:40px;">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="24,2 42,12 42,36 24,46 6,36 6,12" fill="#0D1E28" stroke="#00C9A7" stroke-width="1.2"/>
+            <polygon points="24,7 38,14.5 38,33.5 24,41 10,33.5 10,14.5" fill="none" stroke="#E07B39" stroke-width="0.6" opacity="0.5"/>
+            <text x="24" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="900" fill="url(#flg)" letter-spacing="-1">A</text>
+            <rect x="14" y="34" width="20" height="2" rx="1" fill="#00C9A7" opacity="0.9"/>
+            <circle cx="24" cy="6" r="1.5" fill="#00C9A7"/>
+            <defs>
+              <linearGradient id="flg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00C9A7"/>
+                <stop offset="100%" stop-color="#E07B39"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-name" style="font-size:1.3rem;">ANVILCOURSE</span>
+          <span class="logo-tagline">Certified Asset Recovery</span>
+        </div>
+      </a>
+      <p>Professional crypto and digital asset recovery specialists. Certified, confidential, and committed to getting your assets back. Serving clients globally since 2019.</p>
+      <div class="fcontacts">
+        <a href="mailto:recover@anvilcourse.org" onmouseover="this.style.color='#E07B39'" onmouseout="this.style.color='#8895A7'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          recover@anvilcourse.org
+        </a>
+        <a href="https://wa.me/15857592760" target="_blank" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='#8895A7'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +1 (585) 759-2760
+        </a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#" onclick="openM('wallet');return false;">Wallet Recovery</a></li>
+        <li><a href="#" onclick="openM('password');return false;">Password Recovery</a></li>
+        <li><a href="#" onclick="openM('hacked');return false;">Hacked Account</a></li>
+        <li><a href="#" onclick="openM('exchange');return false;">Exchange Recovery</a></li>
+        <li><a href="#" onclick="openM('hardware');return false;">Hardware Wallet</a></li>
+        <li><a href="#" onclick="openM('mobile');return false;">Mobile Wallet</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#" onclick="openM('about');return false;">About Us</a></li>
+        <li><a href="#" onclick="openM('stories');return false;">Success Stories</a></li>
+        <li><a href="#" onclick="openM('faq');return false;">FAQ</a></li>
+        <li><a href="#" onclick="openM('blog');return false;">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#" onclick="openM('privacy');return false;">Privacy Policy</a></li>
+        <li><a href="#" onclick="openM('terms');return false;">Terms of Service</a></li>
+        <li><a href="#" onclick="openM('disclaimer');return false;">Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <div class="fcopy">&#169; 2026 Anvilcourse. All rights reserved. Professional Crypto Asset Recovery.</div>
+    <div class="flegal">
+      <a href="#" onclick="openM('privacy');return false;">Privacy</a>
+      <a href="#" onclick="openM('terms');return false;">Terms</a>
+      <a href="#" onclick="openM('disclaimer');return false;">Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ MODALS ═══════════════ -->
+
+<!-- Wallet Recovery -->
+<div class="moverlay" id="m-wallet"><div class="modal">
+  <div class="mhead"><h2>&#128272; Wallet Recovery</h2><button class="mclose" onclick="closeM('wallet')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>Anvilcourse has successfully recovered wallets across 60+ blockchain networks with a 94% success rate on cases submitted with sufficient information.</p></div>
+    <h3>What is Wallet Recovery?</h3>
+    <p>Cryptocurrency wallet recovery is the process of restoring access to a digital wallet when the owner has lost their private key, seed phrase, wallet file, or password. Unlike traditional banks, blockchain wallets have no central authority — if you lose access, there is no forgot password button. This is where our forensic specialists come in.</p>
+    <h3>Common Scenarios We Handle</h3>
+    <ul>
+      <li><strong>Lost or forgotten seed phrase</strong> — including partial seed phrase reconstruction using cryptographic permutation methods</li>
+      <li><strong>Corrupted or damaged wallet files</strong> — wallet.dat corruption and partial file recovery from damaged drives</li>
+      <li><strong>Forgotten wallet passwords</strong> — advanced decryption techniques for encrypted wallet files</li>
+      <li><strong>Old or abandoned wallets</strong> — wallets created years ago with lost credentials</li>
+      <li><strong>Deleted wallet applications</strong> — forensic data recovery from device storage</li>
+    </ul>
+    <h3>Supported Networks</h3>
+    <p>Bitcoin, Ethereum, Solana, Cardano, Polygon, Avalanche, BNB Chain, and 60+ others. All major wallet clients including MetaMask, Exodus, Electrum, Trust Wallet, Coinomi, and Atomic Wallet.</p>
+    <h3>How Long Does It Take?</h3>
+    <p>Simple password recovery cases typically resolve within 24 to 72 hours. Complex cases involving partial seed phrases or corrupted files may take 5 to 14 business days. We provide regular status updates throughout.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20need%20help%20with%20wallet%20recovery." target="_blank" class="mwa">&#128172; Contact Us on WhatsApp</a></div>
+  </div>
+</div></div>
+
+<!-- Password Recovery -->
+<div class="moverlay" id="m-password"><div class="modal">
+  <div class="mhead"><h2>&#128273; Password Recovery</h2><button class="mclose" onclick="closeM('password')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>Our cryptographic password recovery team has cracked over 8,000 encrypted wallet files and accounts since 2019 using proprietary GPU-accelerated decryption tools.</p></div>
+    <h3>What We Can Recover</h3>
+    <ul>
+      <li>Encrypted Bitcoin Core wallet.dat files</li>
+      <li>Electrum wallet passwords and MetaMask vault passwords</li>
+      <li>Encrypted PDF and ZIP files containing keys</li>
+      <li>VeraCrypt and TrueCrypt encrypted containers</li>
+      <li>Exchange account passwords with account verification</li>
+      <li>Cold storage device PINs on hardware wallets</li>
+    </ul>
+    <h3>Our Technical Approach</h3>
+    <ul>
+      <li><strong>Dictionary Attacks</strong> — using domain-specific cryptocurrency wordlists built from millions of known patterns</li>
+      <li><strong>Rule-Based Attacks</strong> — applying password pattern analysis based on human behaviour studies</li>
+      <li><strong>GPU Cluster Processing</strong> — our 200+ GPU cluster can test billions of password combinations per second</li>
+      <li><strong>AI-Assisted Pattern Recognition</strong> — machine learning models trained on password datasets to predict likely variations</li>
+      <li><strong>Memory Forensics</strong> — recovering passwords from RAM dumps, swap files, and browser data where applicable</li>
+    </ul>
+    <h3>What We Need From You</h3>
+    <p>To begin a password recovery case, we typically require the encrypted wallet file or relevant data. We operate under strict NDA and never retain your files after case completion. You will receive a full data destruction certificate upon request.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20need%20help%20with%20password%20recovery." target="_blank" class="mwa">&#128172; Start Your Case</a></div>
+  </div>
+</div></div>
+
+<!-- Hacked Account -->
+<div class="moverlay" id="m-hacked"><div class="modal">
+  <div class="mhead"><h2>&#128737; Hacked Account Recovery</h2><button class="mclose" onclick="closeM('hacked')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>Act immediately — the faster you contact us after a hack, the higher the probability of full fund recovery. Time is critical in blockchain transactions.</p></div>
+    <h3>How We Recover Hacked Accounts</h3>
+    <ul>
+      <li><strong>Immediate Blockchain Tracing</strong> — we begin tracking stolen funds across the blockchain in real-time, identifying wallet clusters and exchange deposit addresses</li>
+      <li><strong>Exchange Liaison</strong> — our legal team contacts exchanges where stolen funds may be deposited, requesting emergency freezes</li>
+      <li><strong>Law Enforcement Coordination</strong> — we prepare comprehensive forensic reports for submission to cybercrime units globally</li>
+      <li><strong>Account Restoration</strong> — working with platform security teams to restore legitimate access and reverse unauthorised transactions where possible</li>
+    </ul>
+    <h3>Immediate Steps to Take Right Now</h3>
+    <p>If you have been hacked: (1) Do NOT move any remaining funds — this can complicate tracing. (2) Screenshot all transaction history immediately. (3) Change passwords and enable 2FA on all related accounts. (4) Contact us immediately via WhatsApp.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=URGENT%3A%20My%20crypto%20account%20has%20been%20hacked.%20I%20need%20immediate%20help." target="_blank" class="mwa">&#128680; Emergency WhatsApp Contact</a></div>
+  </div>
+</div></div>
+
+<!-- Exchange Recovery -->
+<div class="moverlay" id="m-exchange"><div class="modal">
+  <div class="mhead"><h2>&#127974; Exchange Recovery</h2><button class="mclose" onclick="closeM('exchange')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>We have established legal and technical relationships with compliance teams at 40+ major exchanges worldwide, enabling faster resolution of frozen or disputed accounts.</p></div>
+    <h3>Scenarios We Handle</h3>
+    <ul>
+      <li><strong>Frozen Accounts</strong> — accounts suspended due to KYC/AML flags at Binance, Coinbase, Kraken, Bitfinex, and others</li>
+      <li><strong>Deceased Account Recovery</strong> — helping estates recover digital assets from exchange accounts of deceased individuals</li>
+      <li><strong>Bankrupt Exchange Claims</strong> — filing creditor claims with FTX, Celsius, Voyager, BlockFi, and other insolvent platforms</li>
+      <li><strong>Identity Verification Issues</strong> — resolving account lockouts caused by identity document mismatches</li>
+      <li><strong>Disputed Transactions</strong> — initiating dispute processes for unauthorised transactions or exchange processing errors</li>
+    </ul>
+    <h3>Our Exchange Network</h3>
+    <p>We maintain formal and informal relationships with compliance and security teams at Binance, Coinbase, Kraken, Bitfinex, Bybit, OKX, Huobi, Gemini, and 30+ regional exchanges. This enables us to escalate cases beyond standard customer support channels.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20need%20help%20with%20exchange%20recovery." target="_blank" class="mwa">&#128172; Discuss Your Case</a></div>
+  </div>
+</div></div>
+
+<!-- Hardware Wallet -->
+<div class="moverlay" id="m-hardware"><div class="modal">
+  <div class="mhead"><h2>&#128190; Hardware Wallet Recovery</h2><button class="mclose" onclick="closeM('hardware')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>Our hardware forensics lab is equipped with specialised tools for chip-level data extraction from damaged Ledger, Trezor, and all major hardware wallet devices.</p></div>
+    <h3>Common Hardware Issues</h3>
+    <ul>
+      <li><strong>PIN Lockout</strong> — too many failed PIN attempts causing the device to wipe itself</li>
+      <li><strong>Physical Damage</strong> — water damage, fire damage, crushing, or component failure</li>
+      <li><strong>Firmware Corruption</strong> — failed firmware updates causing the device to become unresponsive</li>
+      <li><strong>Lost Seed Phrase</strong> — device is accessible but seed phrase backup has been lost</li>
+      <li><strong>Display Failure</strong> — screen damage preventing PIN entry or seed phrase verification</li>
+    </ul>
+    <h3>Supported Devices</h3>
+    <p>Ledger Nano S/X/S Plus, Trezor Model One/T/Safe 3, KeepKey, BitBox02, ColdCard, Foundation Passport, NGRAVE Zero, Jade, and more.</p>
+    <h3>Our Hardware Forensics Process</h3>
+    <ul>
+      <li><strong>Non-Destructive Analysis First</strong> — we begin with non-invasive methods to avoid any further damage</li>
+      <li><strong>Chip-Level Extraction</strong> — for severely damaged devices we perform microcontroller-level data extraction in our ISO-certified clean room</li>
+      <li><strong>Cryptographic Reconstruction</strong> — using extracted data to reconstruct private keys and seed phrases</li>
+      <li><strong>Secure Transfer</strong> — all recovered assets are transferred to your new secure wallet</li>
+    </ul>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20need%20help%20with%20hardware%20wallet%20recovery." target="_blank" class="mwa">&#128172; Contact Hardware Specialists</a></div>
+  </div>
+</div></div>
+
+<!-- Mobile Wallet -->
+<div class="moverlay" id="m-mobile"><div class="modal">
+  <div class="mhead"><h2>&#128241; Mobile Wallet Recovery</h2><button class="mclose" onclick="closeM('mobile')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>Mobile wallet data is often recoverable even after factory resets or app deletions — provided action is taken before data sectors are overwritten.</p></div>
+    <h3>Recovery Scenarios</h3>
+    <ul>
+      <li><strong>Deleted Wallet Apps</strong> — recovering wallet data from device storage after app deletion</li>
+      <li><strong>Factory Reset Devices</strong> — data forensics on factory-reset iOS and Android devices</li>
+      <li><strong>Broken or Water-Damaged Phones</strong> — chip-off data extraction from physically damaged mobile devices</li>
+      <li><strong>Forgotten App Passwords or PINs</strong> — bypassing or recovering app-level security on mobile wallets</li>
+      <li><strong>Cloud Backup Recovery</strong> — extracting wallet data from iCloud, Google Drive, or device backups</li>
+    </ul>
+    <h3>Time is Critical</h3>
+    <p>For factory-reset or deleted app scenarios, the sooner you contact us the better. Stop using the device immediately and contact us. Continued device use can permanently overwrite recoverable data.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20need%20help%20with%20mobile%20wallet%20recovery." target="_blank" class="mwa">&#128172; Contact Mobile Recovery Team</a></div>
+  </div>
+</div></div>
+
+<!-- About Us -->
+<div class="moverlay" id="m-about"><div class="modal">
+  <div class="mhead"><h2>About Anvilcourse</h2><button class="mclose" onclick="closeM('about')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>Anvilcourse was founded in 2019 by a team of blockchain forensics experts, cybersecurity professionals, and legal specialists united by a single mission: helping people reclaim their digital assets.</p></div>
+    <h3>Our Story</h3>
+    <p>The founding of Anvilcourse came from a deeply personal place. Our founders had witnessed firsthand the devastating impact of losing irreplaceable digital assets — not just financially, but emotionally. Behind every locked wallet is a real person: a retirement savings plan, a business investment, years of accumulated value. We set out to build the world's most capable and ethical asset recovery firm.</p>
+    <h3>Our Team</h3>
+    <ul>
+      <li><strong>Blockchain Forensic Analysts</strong> — certified by Chainalysis, CipherTrace, and Elliptic</li>
+      <li><strong>Cryptographic Engineers</strong> — PhD-level specialists in applied cryptography and key recovery</li>
+      <li><strong>Cybersecurity Investigators</strong> — former law enforcement and intelligence professionals</li>
+      <li><strong>Legal Advisors</strong> — specialist crypto and digital asset attorneys in 12 jurisdictions</li>
+      <li><strong>Hardware Forensics Specialists</strong> — engineers trained in microelectronics and chip-level data extraction</li>
+    </ul>
+    <h3>Our Values</h3>
+    <ul>
+      <li><strong>Integrity First</strong> — we only take cases we genuinely believe we can help with</li>
+      <li><strong>Radical Transparency</strong> — clients receive honest probability assessments and regular case updates</li>
+      <li><strong>Confidentiality as Standard</strong> — every case is protected by NDA and military-grade operational security</li>
+      <li><strong>Client Empowerment</strong> — we do not just recover assets, we educate clients to protect them in the future</li>
+    </ul>
+    <h3>Contact</h3>
+    <p>Email: recover@anvilcourse.org | WhatsApp: +1 (585) 759-2760</p>
+  </div>
+</div></div>
+
+<!-- Success Stories -->
+<div class="moverlay" id="m-stories"><div class="modal">
+  <div class="mhead"><h2>&#127942; Success Stories</h2><button class="mclose" onclick="closeM('stories')">&#10005;</button></div>
+  <div class="mbody">
+    <div class="mbox"><p>Over $48 million recovered across 3,800+ cases since 2019. These are real client outcomes, shared with permission.</p></div>
+    <h3>Case 1: $2.1M Bitcoin Recovery — 2025</h3>
+    <p>A high-net-worth investor had stored 22 BTC on an old laptop that suffered a catastrophic hard drive failure in 2021. After four years of failed attempts with other firms, they contacted Anvilcourse. Using advanced chip-level data forensics and proprietary file reconstruction tools, we recovered the complete wallet.dat file and all 22 BTC within 11 days.</p>
+    <h3>Case 2: Exchange Hack Recovery — $87,000 — 2025</h3>
+    <p>A small business owner had their Binance account compromised via a SIM-swap attack. $87,000 in crypto was transferred out within 15 minutes. Anvilcourse initiated blockchain tracing within 2 hours and identified that a portion of the funds had been deposited to a major exchange. Working with the exchange security team, $71,000 was successfully frozen and returned to the client.</p>
+    <h3>Case 3: Partial Seed Phrase Reconstruction — 2024</h3>
+    <p>A client had written down their 24-word seed phrase but water damage had destroyed 6 of the words. With only 18 words, standard recovery tools could not help. Our cryptographic team deployed a custom GPU-accelerated algorithm designed for partial BIP39 seed phrase reconstruction. After 72 hours of computation, we identified the complete 24-word phrase and restored access to a wallet containing 8.4 ETH.</p>
+    <h3>Case 4: FTX Bankruptcy Claim — 2024</h3>
+    <p>Following the FTX collapse, a client with $340,000 trapped on the platform was unsure how to file a creditor claim. Anvilcourse provided full claim management support, filed a comprehensive creditor petition, and represented the client in the bankruptcy proceedings — resulting in a partial recovery payout ahead of schedule.</p>
+    <h3>Case 5: Ledger PIN Lockout — 2024</h3>
+    <p>After incorrectly entering the PIN on their Ledger Nano X three times, a client's device wiped itself. They had lost their recovery sheet. Our hardware forensics team performed a non-destructive internal memory analysis and successfully recovered the seed entropy, enabling complete wallet restoration with 1.6 BTC and $24,000 in altcoins.</p>
+  </div>
+</div></div>
+
+<!-- FAQ -->
+<div class="moverlay" id="m-faq"><div class="modal">
+  <div class="mhead"><h2>&#10067; Frequently Asked Questions</h2><button class="mclose" onclick="closeM('faq')">&#10005;</button></div>
+  <div class="mbody">
+    <h3>How much does recovery cost?</h3>
+    <p>Our fees are structured on a case-by-case basis depending on complexity, asset value, and the technical methods required. We provide a full fee quote following the free initial assessment. We never charge assessment fees — you only pay if you choose to proceed.</p>
+    <h3>Is my information safe with you?</h3>
+    <p>Absolutely. All client data is encrypted using AES-256 at rest and TLS 1.3 in transit. Every team member operates under strict NDA. We are GDPR compliant and follow ISO 27001 information security standards.</p>
+    <h3>What are my chances of recovery?</h3>
+    <p>It depends entirely on your specific situation. During the free assessment, we provide an honest probability estimate. We do not take on cases where recovery is not realistically achievable.</p>
+    <h3>How long does recovery take?</h3>
+    <p>Simple cases such as password recovery typically take 24 to 72 hours. Complex cases involving hardware forensics, partial seed phrases, or exchange litigation can take 1 to 4 weeks. We provide regular updates throughout the process.</p>
+    <h3>Do I need to send you my device?</h3>
+    <p>For most software-based recoveries, no physical device is required. For hardware wallet forensics involving physical damage, we may ask you to securely ship the device to our forensics lab. We provide prepaid insured shipping and a signed chain-of-custody receipt.</p>
+    <h3>Will you need my full seed phrase?</h3>
+    <p>In most cases, we do NOT require your full seed phrase. We use the minimum information necessary. We will only ever request specific information strictly needed for your case.</p>
+    <h3>Are you available for urgent cases?</h3>
+    <p>Yes. For hacked accounts and time-sensitive cases, contact us immediately via WhatsApp at +1 (585) 759-2760. Our emergency response team operates 24/7.</p>
+    <h3>Do you work internationally?</h3>
+    <p>Yes. We serve clients in over 60 countries. Our team operates across multiple time zones and we have legal affiliates in the US, UK, EU, Canada, Australia, Singapore, and UAE.</p>
+  </div>
+</div></div>
+
+<!-- Blog -->
+<div class="moverlay" id="m-blog"><div class="modal">
+  <div class="mhead"><h2>&#128240; Anvilcourse Blog</h2><button class="mclose" onclick="closeM('blog')">&#10005;</button></div>
+  <div class="mbody">
+    <h3>The 2026 Crypto Security Landscape: Threats You Need to Know</h3>
+    <p><em>March 2026 · 12 min read</em></p>
+    <p>As blockchain technology matures, so do the threats targeting crypto holders. In 2026, we are seeing a convergence of AI-powered phishing, sophisticated smart contract exploits, and increasingly bold SIM-swap operations. This comprehensive overview covers the top 10 threats facing crypto investors this year and the countermeasures that actually work.</p>
+    <h3>Understanding BIP39: Why Your Seed Phrase is Both Your Greatest Protection and Greatest Vulnerability</h3>
+    <p><em>February 2026 · 15 min read</em></p>
+    <p>The BIP39 seed phrase standard is used by virtually every major wallet. Understanding exactly how it works — and how its mathematical structure can sometimes aid in recovery — is essential knowledge for every serious crypto investor. We break down the cryptography in plain English.</p>
+    <h3>The Complete Guide to Hardware Wallet Security in 2026</h3>
+    <p><em>February 2026 · 14 min read</em></p>
+    <p>Hardware wallets remain the gold standard for long-term crypto storage, but many users make critical security mistakes. This guide covers proper setup, seed phrase backup strategies, PIN security, firmware updates, and what to do if your device is stolen or damaged.</p>
+    <h3>How Blockchain Forensics Actually Works: A Deep Dive</h3>
+    <p><em>January 2026 · 18 min read</em></p>
+    <p>Blockchain pseudonymity is often mistaken for anonymity. Our forensic team explains the cluster analysis, exchange deposit tracing, and OSINT techniques used to track stolen cryptocurrency — and why this matters for your recovery case.</p>
+    <h3>Crypto Inheritance: Planning for the Transfer of Digital Assets</h3>
+    <p><em>January 2026 · 10 min read</em></p>
+    <p>An estimated $10+ billion in cryptocurrency will become permanently inaccessible due to inadequate inheritance planning in 2026. Learn how to structure your digital estate to ensure your assets reach your beneficiaries.</p>
+    <h3>The Rise of AI-Powered Crypto Scams: How to Protect Yourself</h3>
+    <p><em>December 2025 · 8 min read</em></p>
+    <p>Scammers are now using AI-generated deepfake videos, cloned voices, and personalised phishing messages to trick even experienced investors. Learn to identify the red flags and protect your assets from this new generation of fraud.</p>
+    <h3>DeFi Security: Evaluating Protocol Risk Before You Invest</h3>
+    <p><em>November 2025 · 13 min read</em></p>
+    <p>DeFi offers extraordinary opportunity — and extraordinary risk. This guide provides a practical framework for evaluating smart contract security, audit quality, team reputation, and protocol architecture before committing capital to any DeFi platform.</p>
+    <div style="text-align:center;margin-top:1.5rem;"><a href="mailto:recover@anvilcourse.org" class="btn-outline">Subscribe to Our Newsletter</a></div>
+  </div>
+</div></div>
+
+<!-- Article 1: SIM Swap -->
+<div class="moverlay" id="m-a1"><div class="modal">
+  <div class="mhead"><h2>SIM-Swap Attack Prevention</h2><button class="mclose" onclick="closeM('a1')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>Security · March 2026 · 8 min read</em></p>
+    <div class="mbox"><p>SIM-swap fraud has surged over 300% in 2025 to 2026. Attackers specifically target crypto holders using social engineering against mobile carriers.</p></div>
+    <h3>What is a SIM-Swap Attack?</h3>
+    <p>An attacker convinces your mobile carrier to transfer your phone number to a SIM card they control. Once they have your number, they can bypass SMS-based two-factor authentication on your exchange accounts, email, and other services — enabling full account takeover within minutes.</p>
+    <h3>How Attackers Execute SIM Swaps</h3>
+    <ul>
+      <li><strong>Social Engineering Carrier Staff</strong> — calling customer support with enough personal information to convince a rep to make the swap</li>
+      <li><strong>Corrupt Insider Access</strong> — in some cases, attackers bribe carrier employees directly</li>
+      <li><strong>Phishing for Account Credentials</strong> — gaining access to your carrier online account to initiate the swap without calling</li>
+    </ul>
+    <h3>Defensive Steps That Actually Work</h3>
+    <ul>
+      <li><strong>Set a SIM Lock PIN with Your Carrier</strong> — a mandatory PIN required for any account changes</li>
+      <li><strong>Switch to App-Based 2FA</strong> — replace SMS 2FA with Google Authenticator or a hardware security key</li>
+      <li><strong>Use a Dedicated Email for Crypto</strong> — a separate email account secured with a hardware key, used only for exchange accounts</li>
+      <li><strong>Remove Your Phone Number from Exchange Accounts</strong> — use authenticator apps instead of SMS for all crypto-related 2FA</li>
+    </ul>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20believe%20I%20have%20been%20SIM-swapped." target="_blank" class="mwa">&#128680; Get Emergency Help</a></div>
+  </div>
+</div></div>
+
+<!-- Article 2: Seed Phrase -->
+<div class="moverlay" id="m-a2"><div class="modal">
+  <div class="mhead"><h2>Partial Seed Phrase Recovery</h2><button class="mclose" onclick="closeM('a2')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>Recovery · February 2026 · 10 min read</em></p>
+    <div class="mbox"><p>Losing even a few words of your seed phrase does not necessarily mean permanent loss. With enough known words, cryptographic reconstruction may be possible.</p></div>
+    <h3>Understanding BIP39 Seed Phrases</h3>
+    <p>Most cryptocurrency wallets use the BIP39 standard, which generates a seed phrase of 12 or 24 words drawn from a fixed dictionary of exactly 2,048 words. Each BIP39 seed phrase includes a checksum — a mathematical verification mechanism. This dramatically reduces the number of combinations that need to be tested when some words are missing.</p>
+    <h3>Recovery Feasibility by Missing Words</h3>
+    <ul>
+      <li><strong>12-word phrase with 1 missing word</strong> — 2,048 combinations. Recoverable in seconds.</li>
+      <li><strong>12-word phrase with 2 missing words</strong> — approximately 4 million combinations. Recoverable in minutes with our GPU cluster.</li>
+      <li><strong>24-word phrase with 3 missing words</strong> — approximately 8.5 billion valid combinations. Recoverable in hours to days.</li>
+    </ul>
+    <h3>Warning</h3>
+    <p>Never enter your partial seed phrase into any online tool. Scammers specifically target people who have lost seed phrase words, promising recovery in exchange for the words they know — then draining the wallet. Always verify any recovery service before sharing wallet information.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20have%20a%20partial%20seed%20phrase%20and%20need%20recovery%20help." target="_blank" class="mwa">&#128172; Discuss Your Case Securely</a></div>
+  </div>
+</div></div>
+
+<!-- Article 3: Exchange Freeze -->
+<div class="moverlay" id="m-a3"><div class="modal">
+  <div class="mhead"><h2>Exchange Account Frozen?</h2><button class="mclose" onclick="closeM('a3')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>Exchanges · January 2026 · 7 min read</em></p>
+    <div class="mbox"><p>Exchange account freezes affect hundreds of thousands of crypto holders every year. Most cases are resolvable with the right approach.</p></div>
+    <h3>Why Exchanges Freeze Accounts</h3>
+    <ul>
+      <li>Incomplete KYC/AML identity verification</li>
+      <li>Suspicious activity flags from automated systems</li>
+      <li>Government or law enforcement requests to freeze specific accounts</li>
+      <li>Security holds following detected security anomalies</li>
+      <li>Tax compliance requests in some jurisdictions</li>
+    </ul>
+    <h3>Immediate Steps to Take</h3>
+    <p>Document everything — screenshot all account balances and transaction history. Submit a formal support ticket referencing the specific issue. Gather all identity documents including passport, proof of address, and source of funds documentation. Do not attempt to create a new account with the same exchange as this often triggers permanent bans.</p>
+    <h3>The Escalation Pathway</h3>
+    <p>Standard customer support is usually ineffective for account freeze cases. The pathway that works is: formal written appeal, compliance department escalation, legal demand letter, then regulatory complaint where applicable. Anvilcourse handles this escalation process professionally, leveraging our established relationships with exchange compliance teams.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20my%20exchange%20account%20has%20been%20frozen%20and%20I%20need%20help." target="_blank" class="mwa">&#128172; Get Help Now</a></div>
+  </div>
+</div></div>
+
+<!-- Article 4: Hardware Damage -->
+<div class="moverlay" id="m-a4"><div class="modal">
+  <div class="mhead"><h2>Damaged Hardware Wallet Recovery</h2><button class="mclose" onclick="closeM('a4')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>Hardware · December 2025 · 9 min read</em></p>
+    <div class="mbox"><p>Physical destruction of a hardware wallet does not necessarily mean permanent loss. We have recovered assets from devices that were underwater, exposed to fire, and physically crushed.</p></div>
+    <h3>Recovery After Water Damage</h3>
+    <p>Water damage is the most common hardware wallet emergency we see. If your device has been submerged: DO NOT attempt to turn it on — this is critical. Remove it from water, gently dry the exterior, and place it in a bag of silica gel packets. Contact us immediately. Water-damaged devices have an approximately 75% recovery success rate when they reach us without being powered on.</p>
+    <h3>Recovery After Fire or Heat Damage</h3>
+    <p>Fire creates more complex challenges, but the secure element chips in hardware wallets can survive temperatures up to 400 degrees Celsius in many cases. Our lab can perform chip-off extraction — physically removing the storage chip from the damaged PCB and reading it directly using specialised equipment in our cleanroom facility.</p>
+    <h3>The Chip-Off Process</h3>
+    <p>Chip-off extraction is a complex forensic procedure performed in our ISO-certified cleanroom. It involves non-destructive assessment under microscopy, micro-soldering to extract the storage chip, programming a custom interface adapter, reading raw flash memory data, and cryptographic analysis to reconstruct private keys.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20my%20hardware%20wallet%20is%20physically%20damaged.%20Can%20you%20help%3F" target="_blank" class="mwa">&#128172; Emergency Hardware Recovery</a></div>
+  </div>
+</div></div>
+
+<!-- Article 5: Phishing -->
+<div class="moverlay" id="m-a5"><div class="modal">
+  <div class="mhead"><h2>Crypto Phishing in 2026</h2><button class="mclose" onclick="closeM('a5')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>Fraud · November 2025 · 6 min read</em></p>
+    <div class="mbox"><p>In 2025, phishing attacks accounted for over $2.3 billion in crypto losses globally. AI-generated content makes many attacks nearly indistinguishable from legitimate communications.</p></div>
+    <h3>The New Generation of Crypto Phishing</h3>
+    <ul>
+      <li><strong>Spear Phishing</strong> — attackers research targets on social media before crafting personalised messages that appear to come from your exchange, mentioning recent transactions by amount and date</li>
+      <li><strong>Fake Wallet Popups</strong> — browser extensions that mimic MetaMask or inject fake wallet connection popups into DeFi sites</li>
+      <li><strong>AI Deepfake Scams</strong> — AI-generated video calls impersonating exchange representatives or financial advisors to convince victims to share seed phrases</li>
+      <li><strong>Discord and Telegram Impersonation</strong> — fake admins in crypto project communities sending direct messages claiming to fix wallet sync errors or offering exclusive whitelist spots</li>
+    </ul>
+    <h3>How to Protect Yourself</h3>
+    <ul>
+      <li>Never enter your seed phrase anywhere online — no legitimate service ever needs it</li>
+      <li>Bookmark exchange URLs and only access them from bookmarks, never email links</li>
+      <li>Use a dedicated browser profile for all crypto activity</li>
+      <li>Enable hardware key authentication on all exchange accounts</li>
+      <li>If something feels off — it probably is. Stop and verify independently.</li>
+    </ul>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20think%20I%20may%20have%20been%20phished.%20I%20need%20urgent%20help." target="_blank" class="mwa">&#128680; I Have Been Phished — Help</a></div>
+  </div>
+</div></div>
+
+<!-- Article 6: DeFi -->
+<div class="moverlay" id="m-a6"><div class="modal">
+  <div class="mhead"><h2>DeFi Protocol Recovery</h2><button class="mclose" onclick="closeM('a6')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>DeFi · October 2025 · 11 min read</em></p>
+    <div class="mbox"><p>DeFi hacks resulted in over $3.7 billion in losses in 2025. While recovery is more complex than centralised exchange cases, blockchain tracing and legal pressure have produced significant recoveries.</p></div>
+    <h3>Is Recovery Possible?</h3>
+    <p>Unlike centralised exchange hacks, DeFi exploits involve immutable blockchain transactions. However, recovery pathways do exist. Many exploiters make operational security errors that allow their real identity to be traced through on-chain analysis and OSINT. When stolen funds eventually reach a centralised exchange for cash-out, law enforcement subpoenas can freeze and return them. Some protocol exploiters also accept bounty negotiations in exchange for returning the majority of funds.</p>
+    <h3>Recovery Pathways</h3>
+    <ul>
+      <li><strong>Attacker Operational Errors</strong> — many exploiters make mistakes allowing real identity tracing through on-chain analysis</li>
+      <li><strong>Funds Move to CEX</strong> — when stolen funds reach a centralised exchange, law enforcement subpoenas can freeze and return them</li>
+      <li><strong>White Hat Negotiation</strong> — some protocol exploiters accept bounty negotiations in exchange for returning the majority of funds</li>
+      <li><strong>Insurance Protocol Claims</strong> — if you held coverage on Nexus Mutual, InsurAce, or similar DeFi insurance protocols, you may have a valid claim</li>
+    </ul>
+    <h3>What We Need to Begin</h3>
+    <p>The affected wallet addresses, the protocol involved, the approximate date and time of the exploit, and any transaction hashes you have. Contact us for a free initial assessment.</p>
+    <div style="text-align:center;"><a href="https://wa.me/15857592760?text=Hello%2C%20I%20was%20affected%20by%20a%20DeFi%20exploit%20and%20need%20recovery%20help." target="_blank" class="mwa">&#128172; DeFi Recovery Consultation</a></div>
+  </div>
+</div></div>
+
+<!-- Privacy -->
+<div class="moverlay" id="m-privacy"><div class="modal">
+  <div class="mhead"><h2>Privacy Policy</h2><button class="mclose" onclick="closeM('privacy')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>Last updated: January 2026</em></p>
+    <h3>Information We Collect</h3>
+    <p>We collect only what is strictly necessary to evaluate and execute your recovery case: name, email, phone number, and case details.</p>
+    <h3>How We Use Your Information</h3>
+    <p>Your information is used solely to assess and execute your recovery case and communicate case updates. We do not sell, share, or monetise your personal data in any way.</p>
+    <h3>Data Security</h3>
+    <p>All data is encrypted using AES-256 at rest and TLS 1.3 in transit. Access is restricted to team members directly assigned to your case. All personnel operate under binding NDA. We are fully GDPR compliant.</p>
+    <h3>Data Retention</h3>
+    <p>Case files are retained for 12 months following case closure, then securely deleted. You may request immediate deletion at any time by contacting recover@anvilcourse.org.</p>
+    <h3>Your Rights</h3>
+    <p>You have the right to access, correct, or delete your personal data at any time. Contact recover@anvilcourse.org for data requests.</p>
+  </div>
+</div></div>
+
+<!-- Terms -->
+<div class="moverlay" id="m-terms"><div class="modal">
+  <div class="mhead"><h2>Terms of Service</h2><button class="mclose" onclick="closeM('terms')">&#10005;</button></div>
+  <div class="mbody">
+    <p><em>Last updated: January 2026</em></p>
+    <h3>Services</h3>
+    <p>Anvilcourse provides professional cryptocurrency and digital asset recovery services. By engaging our services, you confirm that you are the rightful owner of the assets in question or are legally authorised to act on behalf of the owner.</p>
+    <h3>Fees</h3>
+    <p>Initial case assessments are provided free of charge. Recovery service fees are agreed upon in writing before work commences. All fee structures are transparent and agreed in advance.</p>
+    <h3>No Guarantees</h3>
+    <p>While we maintain a high success rate, recovery outcomes cannot be guaranteed. We provide honest probability assessments and will not take on cases where recovery is not realistically achievable.</p>
+    <h3>Confidentiality</h3>
+    <p>All client information and case details are strictly confidential. We operate under NDA for all engagements.</p>
+    <h3>Governing Law</h3>
+    <p>These terms are governed by the laws of the State of New York, USA.</p>
+  </div>
+</div></div>
+
+<!-- Disclaimer -->
+<div class="moverlay" id="m-disclaimer"><div class="modal">
+  <div class="mhead"><h2>Disclaimer</h2><button class="mclose" onclick="closeM('disclaimer')">&#10005;</button></div>
+  <div class="mbody">
+    <h3>Not Financial Advice</h3>
+    <p>The content on this website is for informational purposes only and does not constitute financial, investment, legal, or tax advice. Cryptocurrency investments carry substantial risk and you should consult qualified professionals before making financial decisions.</p>
+    <h3>Recovery Success Rates</h3>
+    <p>Statistics cited on this website represent historical aggregate data. Past performance does not guarantee future results. Individual case outcomes vary significantly based on specific circumstances.</p>
+    <h3>Scam Warning</h3>
+    <p>Beware of impersonators claiming to be Anvilcourse. Our only official contact channels are recover@anvilcourse.org and WhatsApp +1 (585) 759-2760. We never initiate unsolicited contact or request upfront payments before a signed service agreement.</p>
+  </div>
+</div></div>
+
+<script>
+function toggleNav(){document.getElementById('main-nav').classList.toggle('open');}
+
+function openM(id){document.getElementById('m-'+id).classList.add('open');document.body.style.overflow='hidden';}
+function closeM(id){document.getElementById('m-'+id).classList.remove('open');document.body.style.overflow='';}
+
+document.querySelectorAll('.moverlay').forEach(function(o){
+  o.addEventListener('click',function(e){if(e.target===this){this.classList.remove('open');document.body.style.overflow='';}});
+});
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){document.querySelectorAll('.moverlay.open').forEach(function(m){m.classList.remove('open');});document.body.style.overflow='';}
+});
+
+function submitWA(){
+  var name=document.getElementById('fn').value.trim();
+  var email=document.getElementById('fe').value.trim();
+  var phone=document.getElementById('fp').value.trim();
+  var type=document.getElementById('ft').value;
+  var asset=document.getElementById('fa').value.trim();
+  var value=document.getElementById('fv').value.trim();
+  var desc=document.getElementById('fd').value.trim();
+  if(!name||!type||!desc){alert('Please fill in your name, recovery type, and situation description before submitting.');return;}
+  var msg='RECOVERY REQUEST - ANVILCOURSE'
+    +'\n\nName: '+name
+    +'\nEmail: '+(email||'Not provided')
+    +'\nPhone: '+(phone||'Not provided')
+    +'\nRecovery Type: '+type
+    +'\nAsset: '+(asset||'Not specified')
+    +'\nEstimated Value: '+(value||'Not specified')
+    +'\n\nSituation:\n'+desc
+    +'\n\nSubmitted via Anvilcourse.org';
+  window.open('https://wa.me/15857592760?text='+encodeURIComponent(msg),'_blank');
+}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:0.1});
+document.querySelectorAll('.svc-card,.step,.acard,.tcard').forEach(function(el){
+  el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';obs.observe(el);
+});
+</script>
+</body>
+</html>
